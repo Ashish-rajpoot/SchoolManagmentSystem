@@ -20,30 +20,30 @@ stage('Compile Stage') {
          stage('Docker Build Stage') {
             steps {
                 echo '::::: Hello, Docker Build stage  :::::'
-                sh 'docker image build -t schoolManagmentSystems .'                              
+                sh 'docker image build -t schoolmanagmentsystems .'                              
             }
         } 
         stage('Tag docker image'){
             steps {
-                sh 'docker tag schoolManagmentSystems ashish142/schoolManagmentSystems:1.0.0'
+                sh 'docker tag schoolmanagmentsystems ashish142/schoolmanagmentsystems:1.0.0'
             }          
         }
         stage('Push docker image'){
             steps {
-                sh 'sudo docker push ashish142/schoolManagmentSystems:1.0.0'
+                sh 'sudo docker push ashish142/schoolmanagmentsystems:1.0.0'
             }          
         }
         stage('Deploy Stage') {
             steps {
                 echo 'Hello, Docker Deployment.'
                 sh '''
-                 (if  [ $(docker ps -a | grep schoolManagmentSystems | cut -d " " -f1) ]; then \
-                        echo $(docker rm -f schoolManagmentSystems); \
+                 (if  [ $(docker ps -a | grep schoolmanagmentsystems | cut -d " " -f1) ]; then \
+                        echo $(docker rm -f schoolmanagmentsystems); \
                         echo "---------------- successfully removed ecom-webservice ----------------"
                      else \
                     echo OK; \
                  fi;);
-            docker container run --restart always --name schoolManagmentSystems -p 8082:8081 -d schoolManagmentSystems
+            docker container run --restart always --name schoolmanagmentsystems -p 8082:8081 -d schoolmanagmentsystems
             '''
             }
         }    
