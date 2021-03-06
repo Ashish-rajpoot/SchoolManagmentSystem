@@ -19,6 +19,7 @@ import com.entity.Class_subjects_teachers;
 /**
  * Servlet implementation class AddClassConfig
  */
+@SuppressWarnings("unused")
 @WebServlet("/map/AddClassConfig")
 public class AddClassConfig extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -13,6 +13,7 @@ import javax.servlet.RequestDispatcher;
 import com.entity.Users;
 import com.mysql.cj.Session;
 
+@SuppressWarnings("unused")
 public class UserDao {
 
 	public List<Users> selectAllUsers() throws SQLException{

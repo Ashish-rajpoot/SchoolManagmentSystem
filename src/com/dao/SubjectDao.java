@@ -9,6 +9,7 @@ import com.entity.Subjects;
 import com.entity.Subjects;
 
 
+@SuppressWarnings("unused")
 public class SubjectDao {
 
 	private static StudentDao studentDao;

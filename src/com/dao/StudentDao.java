@@ -211,6 +211,7 @@ public class StudentDao {
 		return strength;
 	}
 
+	@SuppressWarnings("unused")
 	private void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {
 			if (e instanceof SQLException) {

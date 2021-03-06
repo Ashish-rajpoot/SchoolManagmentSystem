@@ -104,7 +104,43 @@ public class Classes {
 		this.class_name = class_name;
 		this.seats = seats;
 		this.strength = strength;
+		this.setTeachers(teachers);
+		this.setSubjects(subjects);
+	}
+
+
+
+	public List<Students> getStudents() {
+		return students;
+	}
+
+
+
+	public void setStudents(List<Students> students) {
+		this.students = students;
+	}
+
+
+
+	public List<Teachers> getTeachers() {
+		return teachers;
+	}
+
+
+
+	public void setTeachers(List<Teachers> teachers) {
 		this.teachers = teachers;
+	}
+
+
+
+	public List<Subjects> getSubjects() {
+		return subjects;
+	}
+
+
+
+	public void setSubjects(List<Subjects> subjects) {
 		this.subjects = subjects;
 	}
 

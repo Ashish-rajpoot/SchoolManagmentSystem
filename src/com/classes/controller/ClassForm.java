@@ -15,6 +15,7 @@ import com.dao.ClassDao;
 /**
  * Servlet implementation class ClassForm
  */
+@SuppressWarnings("unused")
 @WebServlet("/map/ClassForm")
 public class ClassForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;

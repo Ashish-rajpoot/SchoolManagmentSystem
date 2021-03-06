@@ -20,6 +20,7 @@ import com.entity.Teachers;
 /**
  * Servlet implementation class AddTeacher
  */
+@SuppressWarnings("unused")
 @WebServlet("/map/AddTeacher")
 public class AddTeacher extends HttpServlet {
 	private static final long serialVersionUID = 1L;

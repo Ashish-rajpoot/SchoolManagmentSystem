@@ -19,6 +19,7 @@ import com.entity.Students;
 /**
  * Servlet implementation class Subjects
  */
+@SuppressWarnings("unused")
 @WebServlet("/map/AddSubject")
 public class AddSubject extends HttpServlet {
 	private static final long serialVersionUID = 1L;

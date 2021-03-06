@@ -22,6 +22,7 @@ import com.entity.Subjects;
 /**
  * Servlet implementation class Subjects
  */
+@SuppressWarnings("unused")
 @WebServlet("/map/SubjectsEditUpdate")
 public class SubjectsEditUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;

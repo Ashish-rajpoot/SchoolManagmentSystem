@@ -18,6 +18,7 @@ import com.dao.StudentDao;
 @WebServlet("/map/StudentForm")
 public class StudentForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private static StudentDao studentDao;
        
     /**

@@ -22,6 +22,7 @@ import com.entity.Students;
 /**
  * Servlet implementation class Subjects
  */
+@SuppressWarnings("unused")
 @WebServlet("/map/SubjectDelete")
 public class SubjectDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;

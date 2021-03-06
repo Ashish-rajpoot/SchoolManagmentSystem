@@ -152,6 +152,7 @@ public class TeacherDao {
 	}
 
 
+	@SuppressWarnings("unused")
 	private void printSQLException(SQLException ex) {
 		for (Throwable e : ex) {
 			if (e instanceof SQLException) {

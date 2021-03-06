@@ -17,6 +17,7 @@ import com.entity.Students;
 /**
  * Servlet implementation class UpdateUser
  */
+@SuppressWarnings("unused")
 @WebServlet("/map/StudentByStudentId")
 public class StudentByStudentId extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -21,6 +21,7 @@ import com.entity.Subjects;
 @WebServlet("/map/SubjectById")
 public class SubjectById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private static SubjectDao subjectDao;
        
     /**
