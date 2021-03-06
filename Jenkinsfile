@@ -7,7 +7,14 @@ pipeline {
     triggers {
         pollSCM('* * * * *')
     }
-   
+    stages {
+
+        stage('Compile Stage') {
+            steps {
+                echo '::::: Hello, Compile  :::::'                
+                sh 'mvn compile'                      
+            }
+        }  
 
         stage('mvn Build Stage') {
             steps {
