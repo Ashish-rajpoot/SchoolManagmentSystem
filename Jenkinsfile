@@ -8,7 +8,7 @@ pipeline {
         pollSCM('* * * * *')
     }
    
-
+    stages {
         stage('mvn Build Stage') {
             steps {
                 echo '::::: Hello, mvn Build stage  :::::'
@@ -47,3 +47,4 @@ pipeline {
         }    
     }      
     
+}
