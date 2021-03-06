@@ -16,12 +16,7 @@ stage('Compile Stage') {
                 sh 'mvn clean'                      
             }
         }  
-        stage('mvn Build Stage') {
-            steps {
-                echo '::::: Hello, mvn Build stage  :::::'
-                sh 'mvn clean package -DskipTests'                       
-            }
-        }  
+          
          stage('Docker Build Stage') {
             steps {
                 echo '::::: Hello, Docker Build stage  :::::'
