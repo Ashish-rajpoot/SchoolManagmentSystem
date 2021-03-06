@@ -29,7 +29,7 @@
 		<c:if test="${subject == null}">
 			<form action="AddSubject" method="post">
 		</c:if>
-		
+						<jsp:include page="../includes/error.jsp" />
 				<c:if test="${subject != null}">
 					<fieldset class="form-group">
 						<label>Subject ID</label> <input type="text"
@@ -39,7 +39,7 @@
 				</c:if>
 				<c:if test="${subject == null}">
 					<fieldset class="form-group">
-						<label>Subject ID</label> <input type="text"
+						<label></label> <input type="hidden"
 							value="${subject.subject_id}" class="form-control"
 							name="subject_id" required="required">
 					</fieldset>

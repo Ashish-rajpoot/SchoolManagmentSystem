@@ -1,6 +1,8 @@
 package com.teacher.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -44,20 +46,18 @@ public class AddTeacher extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		List<String>success_msg = new ArrayList<>();
 		
 			try {
-				int teacher_id = Integer.parseInt(request.getParameter("teacher_id"));
 				int age = Integer.parseInt(request.getParameter("age"));
 				String teacher_name = request.getParameter("teacher_name");
 				String email = request.getParameter("email_id");				
 				String gender = request.getParameter("gender");	
 				
-				
-				
-				teacherDao.insertTeacher(new Teachers(teacher_id,age,teacher_name,gender,email));
-				RequestDispatcher disp = request.getRequestDispatcher("Teachers");
+				teacherDao.insertTeacher(new Teachers(age,teacher_name,gender,email));
+				success_msg.add("Teacher Added SuccessFully...");
+				request.setAttribute("success", success_msg);
+				RequestDispatcher disp = request.getRequestDispatcher("teacherform.jsp");
 				   disp.forward(request, response);
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block

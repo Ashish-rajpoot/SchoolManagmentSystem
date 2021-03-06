@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "logout", urlPatterns = {"/map/Logout"})
 public class Logout extends HttpServlet {
@@ -23,13 +24,11 @@ public class Logout extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         // TODO Auto-generated method stub
-    	ArrayList<String> success = new ArrayList<>();
         HttpSession session = request.getSession(false);
         session.setAttribute("user", "");
         session.removeAttribute("user");
         session.invalidate();
-        success.add("SuccessFully LogOut...");
-		request.setAttribute("success",success);
-        response.sendRedirect("/SchoolManagmentSystem/login");
+        response.sendRedirect("/SchoolManagmentSystem/login.jsp");
+        
     }
 }

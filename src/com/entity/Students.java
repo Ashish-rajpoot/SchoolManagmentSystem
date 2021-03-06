@@ -93,6 +93,15 @@ public class Students {
 	public Students() {
 		// TODO Auto-generated constructor stub
 	}
+	public Students(String name, String email_id, int age, String gender, int class_id, Classes cls) {
+		super();
+		this.name = name;
+		this.email_id = email_id;
+		this.age = age;
+		this.gender = gender;
+		this.class_id = class_id;
+		this.cls = cls;
+	}
 	
 	
 	

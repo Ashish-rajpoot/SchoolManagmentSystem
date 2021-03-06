@@ -47,34 +47,32 @@ public class StudentDao {
 		return students;
 	}
 
-
-
+	
 	//insert Teachers
-	public void  insertStudent(Students students) {     
+		public void  insertStudent(Students students) {     
 
-		String sql = "INSERT INTO students (student_id,name,email_id, age, gender, class_id) VALUES(?,?,?,?,?,?)";
+			String sql = "INSERT INTO students (name,email_id, age, gender, class_id) VALUES(?,?,?,?,?)";
 
-		try (Connection connection = Database.getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-			preparedStatement.setInt(1,students.getStudent_id());
-			preparedStatement.setString(2,students.getName());
-			preparedStatement.setString(3,students.getEmail_id());
-			preparedStatement.setInt(4,students.getAge());		
-			preparedStatement.setString(5,students.getGender());		
-			preparedStatement.setInt(6, students.getClass_id());
-			preparedStatement.executeUpdate();           
+			try (Connection connection = Database.getConnection();
+					PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+				preparedStatement.setString(1,students.getName());
+				preparedStatement.setString(2,students.getEmail_id());
+				preparedStatement.setInt(3,students.getAge());		
+				preparedStatement.setString(4,students.getGender());		
+				preparedStatement.setInt(5, students.getClass_id());
+				preparedStatement.executeUpdate();           
 
-		}  catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}catch (Exception e) {
-			// TODO: handle exception
+			}  catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+
 		}
-
-	}
 
 	//Select User by student id;	
 	public static Students selectStudentById(int student_id) {

@@ -3,6 +3,7 @@ package com.assign.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -48,9 +49,12 @@ public class AddClassConfig extends HttpServlet {
 		int class_id = Integer.parseInt(request.getParameter("class_id"));
 		int teacher_id = Integer.parseInt(request.getParameter("teacher_id"));
 		int subject_id = Integer.parseInt(request.getParameter("subject_id"));
+		List<String>success_msg = new ArrayList<>();
 		try {
 			class_subjects_teachersDao.addClassTeacherSubject(new Class_subjects_teachers(class_id,subject_id, teacher_id ));
-			RequestDispatcher disp = request.getRequestDispatcher("Class_subject_teacher");
+			success_msg.add("Class Assigned SuccessFully...");
+			request.setAttribute("success", success_msg);
+			RequestDispatcher disp = request.getRequestDispatcher("AssignForm");
 			disp.forward(request, response);
 
 		} catch (Exception e) {

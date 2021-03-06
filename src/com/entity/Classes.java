@@ -16,6 +16,14 @@ public class Classes {
 
 	
 
+	public Classes(String class_name, int seats) {
+		super();
+		this.class_name = class_name;
+		this.seats = seats;
+	}
+
+
+
 	public Classes(int class_id, String class_name, int seats) {
 
 	this.class_id = class_id;

@@ -1,6 +1,7 @@
 package com.classes.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -43,7 +44,7 @@ public class Classes extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at:").append(request.getContextPath());
-		
+		List<String>success_msg = new ArrayList<>();
 		try {
 			List<com.entity.Classes> classess = classDao.getAllClassesWithStrength();
 			request.setAttribute("cla", classess);		

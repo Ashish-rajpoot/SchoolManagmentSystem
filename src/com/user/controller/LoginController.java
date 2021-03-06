@@ -60,7 +60,7 @@ public class LoginController extends HttpServlet {
 				} else
 					try {
 						if (request.getAttribute("user")==null && !request.getRequestURI().endsWith("map/login")) {
-							errors.add("invalid UserName or Password");
+							errors.add("Invalid Username or Password");
 							request.setAttribute("errors", errors);
 							request.getRequestDispatcher("login.jsp").forward(request, response);
 						}

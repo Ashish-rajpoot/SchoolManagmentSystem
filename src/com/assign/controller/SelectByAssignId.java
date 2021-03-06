@@ -48,7 +48,6 @@ public class SelectByAssignId extends HttpServlet {
 		Class_subjects_teachers existingData;
 		
 		existingData = class_subjects_teachersDao.selectClass_subjects_teachersByClassId(assign_id);
-		System.out.println(existingData);
 		request.setAttribute("assign", existingData);
 		RequestDispatcher rd = request.getRequestDispatcher("configclassform.jsp");
 		rd.forward(request, response);

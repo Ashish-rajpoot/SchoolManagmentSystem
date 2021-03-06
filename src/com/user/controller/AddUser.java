@@ -1,6 +1,8 @@
 package com.user.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -40,8 +42,7 @@ public class AddUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		List<String>success_msg = new ArrayList<>();
 		try {
 			
 			String username = request.getParameter("name"); 
@@ -50,6 +51,8 @@ public class AddUser extends HttpServlet {
 			String role = request.getParameter("role");
 			
 			userDao.insertUser(new com.entity.Users(username,email,password,role));
+			success_msg.add("Registerd SuccessFully...");
+			request.setAttribute("success", success_msg);
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
 			

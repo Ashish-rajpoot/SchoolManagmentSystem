@@ -40,7 +40,6 @@
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<a  href="home.jsp"><button type="button" class="btn btn-light ">Home</button></a>
 					
-				<a  href="home.jsp"><button type="button" class="btn btn-light ">Dashboard</button></a>
 				<%
 						String user = (String) session.getAttribute("user");
 					%>

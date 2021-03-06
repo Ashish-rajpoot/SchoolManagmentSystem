@@ -18,36 +18,44 @@
 	<div class="container jumbotron">
 		<div class="row">
 			<div class="col-lg">
-				
+
 				<hr class="w-75">
 			</div>
 		</div>
 		<br>
-		<table class="table table-striped text-center">
-			<thead>
-				<tr>
-					<th>Class ID</th>
-					<th>Teacher ID</th>
-					<th>Subject ID</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="a" items="${data}">
-				
+	<jsp:include page="../includes/error.jsp" />
+		<c:if test="${data != null}">
+
+			<table class="table table-striped text-center">
+				<thead>
 					<tr>
-						<td><c:out value="${a.cls.class_name}" /></td>
-						<td><c:out value="${a.techer.teacher_name}" /></td>
-						<td><c:out value="${a.sub.name}" /></td>
-						<td><a class="btn btn-success"
-							href="SelectByAssignId?assign_id=<c:out value='${a.assign_id}' />" role="button">Edit</a>
-							&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn btn-danger"
-							href="DeleteConfig?assign_id=<c:out value='${a.assign_id}' />" role="button">Delete</a>
-						</td>
+						<th>Class Name</th>
+						<th>Teacher Name</th>
+						<th>Subject Name</th>
+						<th>Action</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<c:forEach var="a" items="${data}">
+
+						<tr>
+							<td><c:out value="${a.cls.class_name}" /></td>
+							<td><c:out value="${a.techer.teacher_name}" /></td>
+							<td><c:out value="${a.sub.name}" /></td>
+							<td><a class="btn btn-success"
+								href="SelectByAssignId?assign_id=<c:out value='${a.assign_id}' />"
+								role="button">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a
+								class="btn btn-danger"
+								href="DeleteConfig?assign_id=<c:out value='${a.assign_id}' />"
+								role="button">Delete</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</c:if>
+		<c:if test="${data == null}">
+			<h1>Please Assign Classes !!!</h1>
+		</c:if>
 	</div>
 	</div>
 

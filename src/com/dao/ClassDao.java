@@ -40,6 +40,7 @@ public class ClassDao {
 
 				classes.add(new Classes(class_id,class_name,seats,strength,teacher,subject));  
 			}
+			connection.close();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -52,15 +53,14 @@ public class ClassDao {
 	// Insert Class
 	public void  addClass(Classes classes) {     
 
-		String sql = "INSERT INTO classes (class_id,class_name,seats) VALUES(?,?,?)";
+		String sql = "INSERT INTO classes (class_name,seats) VALUES(?,?)";
 
 		try (Connection connection = Database.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-			preparedStatement.setInt(1,classes.getClass_id());
-			preparedStatement.setString(2,classes.getClass_name());
-			preparedStatement.setInt(3,classes.getSeats()); 	
+			preparedStatement.setString(1,classes.getClass_name());
+			preparedStatement.setInt(2,classes.getSeats()); 	
 			preparedStatement.executeUpdate();           
-
+			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,7 +84,6 @@ public class ClassDao {
 
 				classes=new Classes(class_id,class_name,seats);  
 			}
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,7 +101,7 @@ public class ClassDao {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql)) {		
 			preparedStatement.setInt(1, class_id);
 			classdeleted = preparedStatement.executeUpdate() > 0;
-
+			connection.close();
 		}catch (SQLException e) {
 			// TODO: handle exception
 		}
@@ -121,8 +120,8 @@ public class ClassDao {
 			preparedStatement.setInt(3, classes.getClass_id());
 
 			classupdate = preparedStatement.executeUpdate() > 0;
-			preparedStatement.close();
-		}catch (SQLException e) {
+			connection.close();
+			}catch (SQLException e) {
 			// TODO: handle exception
 		}
 		return classupdate;
@@ -137,7 +136,8 @@ public class ClassDao {
 			ResultSet set = preparedStatement.executeQuery();
 			while (set.next()) {
 				int class_id = set.getInt("class_id");       
-				classid.add(new Classes(class_id));  
+				classid.add(new Classes(class_id)); 
+				connection.close();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

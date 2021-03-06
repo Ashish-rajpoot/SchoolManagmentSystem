@@ -11,6 +11,7 @@
         <h1>Students Management</h1>
         <h3>List of Students</h3>
     </center>
+       <jsp:include page="../includes/error.jsp" />
     <div align="center">
        <table class="table table-striped text-center">
 			<thead>

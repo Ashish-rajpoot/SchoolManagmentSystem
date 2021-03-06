@@ -30,7 +30,7 @@
             		</c:if>
 			</h2>
 		</caption>
-
+<jsp:include page="../includes/error.jsp" />
 		<c:if test="${cls != null}">
 			<fieldset class="form-group">
 				<label>Class ID</label> <input type="text"
@@ -40,7 +40,7 @@
 		</c:if>
 		<c:if test="${cls == null}">
 			<fieldset class="form-group">
-				<label>Class ID</label> <input type="text"
+				<label></label> <input type="hidden"
 					value="<c:out value='${cls.class_id}' />" class="form-control"
 					name="class_id" required="required" >
 			</fieldset>
@@ -48,13 +48,13 @@
 		<fieldset class="form-group">
 			<label>Class name</label> <input type="text"
 				value="<c:out value='${cls.class_name}' />" class="form-control"
-				name="class_name">
+				name="class_name" required="required">
 		</fieldset>
 
 		<fieldset class="form-group">
 			<label>seats</label> <input type="text"
 				value="<c:out value='${cls.seats}' />" class="form-control"
-				name="seats">
+				name="seats" required="required">
 		</fieldset>
 
 		<div class="col-lg-12 mx-auto">

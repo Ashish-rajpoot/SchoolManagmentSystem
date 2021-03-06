@@ -24,7 +24,7 @@
 	</caption>
 
 	<div class="container col-md-5">
-
+   <jsp:include page="../includes/error.jsp" />
 		<c:if test="${teacher != null}">
 			<form action="TeacherUpdateEdit" method="post">
 		</c:if>
@@ -40,7 +40,7 @@
 		</c:if>
 		<c:if test="${teacher == null}">
 			<fieldset class="form-group">
-				<label>Teacher ID</label> <input type="text"
+				<label></label> <input type="hidden"
 					value="${teacher.teacher_id}" class="form-control"
 					name="teacher_id" required="required">
 			</fieldset>

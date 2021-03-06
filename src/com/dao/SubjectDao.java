@@ -49,12 +49,11 @@ public class SubjectDao {
     // Insert Class
     public void  addSubject(Subjects subjects) {     
 
-        String sql = "INSERT INTO subjects (subject_id,name) VALUES(?,?)";
+        String sql = "INSERT INTO subjects (name) VALUES(?)";
 
         try (Connection connection = Database.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-            	 preparedStatement.setInt(1,subjects.getSubject_id());
- 				preparedStatement.setString(2,subjects.getName());
+ 				preparedStatement.setString(1,subjects.getName());
  				preparedStatement.executeUpdate();           
 
         } catch (SQLException e) {

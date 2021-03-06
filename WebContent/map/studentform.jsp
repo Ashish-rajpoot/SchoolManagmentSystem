@@ -30,7 +30,7 @@
 			<form action="AddStudent" method="post">
 		</c:if>
 
-
+   <jsp:include page="../includes/error.jsp" />
 		<c:if test="${student != null}">
 			<fieldset class="form-group">
 				<label>Student ID</label> <input type="text"
@@ -40,7 +40,7 @@
 		</c:if>
 		<c:if test="${student == null}">
 			<fieldset class="form-group">
-				<label>Student ID</label> <input type="text"
+				<label></label> <input type="hidden"
 					value="${student.student_id}" class="form-control"
 					name="student_id" required="required">
 			</fieldset>
@@ -53,7 +53,7 @@
 		</fieldset>
 		<fieldset class="form-group">
 			<label>Class:</label> <select class="custom-select form-control"
-				name="class_id" value="${student.class_id}">
+				name="class_id" value="${student.class_id}" required="required">
 				<%
 						String sql = "SELECT * FROM classes";
 					try (Connection connection = Database.getConnection();

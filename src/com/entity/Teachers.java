@@ -97,6 +97,17 @@ public class Teachers {
 		this.gender = gender;
 		this.email_id = email_id;
 	}
+
+
+
+
+	public Teachers(int age, String teacher_name, String gender, String email_id) {
+		super();
+		this.age = age;
+		this.teacher_name = teacher_name;
+		this.gender = gender;
+		this.email_id = email_id;
+	}
 	
 
 	

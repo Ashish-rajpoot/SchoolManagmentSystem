@@ -47,15 +47,14 @@ public class TeacherDao {
 	//insert Teachers
 	public void  insertTeacher(Teachers teacher) {     
 
-		String sql = "INSERT INTO teachers (teacher_id,age,teacher_name,email_id,gender) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO teachers (age,teacher_name,email_id,gender) VALUES(?,?,?,?)";
 
 		try (Connection connection = Database.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(sql)){
-			preparedStatement.setInt(1,teacher.getTeacher_id());
-			preparedStatement.setInt(2,teacher.getAge());
-			preparedStatement.setString(3,teacher.getTeacher_name());
-			preparedStatement.setString(4,teacher.getEmail_id());
-			preparedStatement.setString(5,teacher.getGender());		
+			preparedStatement.setInt(1,teacher.getAge());
+			preparedStatement.setString(2,teacher.getTeacher_name());
+			preparedStatement.setString(3,teacher.getEmail_id());
+			preparedStatement.setString(4,teacher.getGender());		
 			preparedStatement.executeUpdate();           
 
 		}  catch (NumberFormatException e) {

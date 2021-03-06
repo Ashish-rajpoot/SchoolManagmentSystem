@@ -33,7 +33,8 @@ public class Class_subjects_teachersDao {
 
 				class_subjects_teachers.add(new Class_subjects_teachers(class_id,subject_id,teacher_id,assign_id,class_name,subject_name,teacher_name));  
 			}
-
+		
+			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,7 +57,7 @@ public class Class_subjects_teachersDao {
 			preparedStatement.setInt(2,class_subjects_teachers.getTeacher_id());
 			preparedStatement.setInt(3,class_subjects_teachers.getSubject_id()); 	
 			preparedStatement.executeUpdate();           
-
+			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,14 +83,14 @@ public class Class_subjects_teachersDao {
 				Teachers teacher_name= com.dao.TeacherDao.selectTeacherById(set.getInt("teacher_id"));
 
 				class_subjects_teachers=(new Class_subjects_teachers(class_id,subject_id,teacher_id,assign_id,class_name,subject_name,teacher_name));  
-//				class_subjects_teachers=new Class_subjects_teachers(class_id,subject_id,teacher_id,assign_id);  
 			}
-
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return class_subjects_teachers;
+		
 	}
 
 	//Delete User;
@@ -102,7 +103,7 @@ public class Class_subjects_teachersDao {
 				PreparedStatement preparedStatement = connection.prepareStatement(sql)) {		
 			preparedStatement.setInt(1, assign_id);
 			classdeleted = preparedStatement.executeUpdate() > 0;
-
+			connection.close();
 		}catch (SQLException e) {
 			// TODO: handle exception
 		}
@@ -122,7 +123,7 @@ public class Class_subjects_teachersDao {
 			preparedStatement.setInt(4, class_subjects_teachers.getAssign_id());
 
 			classupdate = preparedStatement.executeUpdate() > 0;
-			preparedStatement.close();
+			connection.close();
 		}catch (SQLException e) {
 			// TODO: handle exception
 		}
@@ -144,6 +145,7 @@ public class Class_subjects_teachersDao {
 			while(rs.next()) {
 				int subjectid=rs.getInt("subject_id");
 				subject.add(SubjectDao.selectSubjectById(subjectid));
+				connection.close();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -163,6 +165,7 @@ public class Class_subjects_teachersDao {
 			while(rs.next()) {
 				int teacherid=rs.getInt("teacher_id");
 				teacher.add(TeacherDao.selectTeacherById(teacherid));
+				connection.close();
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -179,6 +182,7 @@ public class Class_subjects_teachersDao {
 
 	            while (set.next())
 	                classes.add(ClassDao.selectClassById(set.getInt("class_id")));
+	            connection.close();
 
 	        } catch (SQLException e) {
 	            // TODO Auto-generated catch block
@@ -198,6 +202,7 @@ public class Class_subjects_teachersDao {
 
 	            while (set.next())
 	                subjects.add(SubjectDao.selectSubjectById(set.getInt("subject_id")));
+	            connection.close();
 
 	        } catch (SQLException e) {
 	            // TODO Auto-generated catch block
@@ -219,6 +224,7 @@ public class Class_subjects_teachersDao {
 
 	            if (set.next())
 	                teacher = TeacherDao.selectTeacherById(set.getInt("teacher_id"));
+	            connection.close();
 
 	        } catch (SQLException e) {
 	            // TODO Auto-generated catch block

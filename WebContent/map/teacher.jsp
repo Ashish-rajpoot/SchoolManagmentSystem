@@ -12,6 +12,7 @@
         <h1>Teachers Management</h1>
         <h3>List of Teachers</h3>
     </center>
+       <jsp:include page="../includes/error.jsp" />
     <div align="center">
        <table class="table table-striped text-center">
 			<thead>

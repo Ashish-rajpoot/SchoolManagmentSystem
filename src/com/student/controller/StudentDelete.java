@@ -2,6 +2,8 @@ package com.student.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -43,10 +45,12 @@ public class StudentDelete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		List<String>success_msg = new ArrayList<>();
 		try {
 			int id = Integer.parseInt(request.getParameter("student_id"));
 			studentDao.deleteStudent(id);
+			success_msg.add("Student Deleted SuccessFully...");
+			request.setAttribute("success", success_msg);
 			RequestDispatcher disp = request.getRequestDispatcher("Students");
 		       disp.forward(request, response);
 		} catch (NumberFormatException e) {

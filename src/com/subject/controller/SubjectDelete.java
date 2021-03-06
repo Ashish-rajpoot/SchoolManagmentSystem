@@ -2,6 +2,7 @@ package com.subject.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -47,15 +48,13 @@ public class SubjectDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		
-		
+		List<String>success_msg = new ArrayList<>();		
 		//Delete Subjects
 		try {
 			int id = Integer.parseInt(request.getParameter("subject_id"));
 			subjectDao.deleteSubject(id);
+			success_msg.add("Subject Deleted SuccessFully...");
+			request.setAttribute("success", success_msg);
 			RequestDispatcher disp = request.getRequestDispatcher("Subjects");
 		       disp.forward(request, response);
 		} catch (NumberFormatException e) {

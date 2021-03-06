@@ -1,6 +1,7 @@
 package com.subject.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -46,13 +47,15 @@ public class AddSubject extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		List<String>success_msg = new ArrayList<>();
 	
 		try {			
-			int student_id = Integer.parseInt(request.getParameter("subject_id"));
 			String name = request.getParameter("name");
 			
-			subjectDao.addSubject(new com.entity.Subjects(student_id,name));
-			RequestDispatcher disp = request.getRequestDispatcher("Subjects");
+			subjectDao.addSubject(new com.entity.Subjects(name));
+			success_msg.add("Subject Added SuccessFully...");
+			request.setAttribute("success", success_msg);
+			RequestDispatcher disp = request.getRequestDispatcher("SubjectForm");
 			   disp.forward(request, response);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block

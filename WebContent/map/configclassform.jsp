@@ -42,7 +42,7 @@
 				value="<c:out value='${assign.assign_id}'/>" />
 		</c:if>
 		<fieldset class="form-group">
-			<label>Class ID</label> <select class="custom-select form-control"
+			<label>Class Name</label> <select class="custom-select form-control"
 				name="class_id" required="required">
 				<option selected value="${assign.class_id}">
 					<c:if test="${assign != null}">
@@ -73,7 +73,7 @@
 			</select>
 		</fieldset>
 		<fieldset class="form-group">
-			<label>Teacher ID</label> <select class="custom-select form-control"
+			<label>Teacher Name</label> <select class="custom-select form-control"
 				name="teacher_id" required="required">
 				<option selected value="${assign.teacher_id}">
 					<c:if test="${assign != null}">
@@ -104,7 +104,7 @@
 			</select>
 		</fieldset>
 		<fieldset class="form-group">
-			<label>Subject ID</label> <select class="custom-select form-control"
+			<label>Subject Name</label> <select class="custom-select form-control"
 				name="subject_id" required="required">
 				<option selected value="${assign.subject_id}">
 					<c:if test="${assign != null}">
@@ -142,7 +142,6 @@
 			<button type="submit" name="submit" class="btn-primary form-control">Assign Class</button>
 				</c:if>
 	</div>
-	<c:out value="${assign.cls }"/>
 </body>
 <jsp:include page="../includes/footer.jsp" />
 </html>

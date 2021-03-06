@@ -35,6 +35,11 @@ public class Subjects {
 		super();
 		this.subject_id = subject_id;
 	}
+
+	public Subjects(String name) {
+		super();
+		this.name = name;
+	}
 	
 	
 

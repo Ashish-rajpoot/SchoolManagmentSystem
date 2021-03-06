@@ -1,6 +1,8 @@
 package com.classes.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -43,13 +45,14 @@ public class AddClass extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		List<String>success_msg = new ArrayList<>();
 		try {
-			int class_id = Integer.parseInt(request.getParameter("class_id"));
 			String class_name = request.getParameter("class_name");
 			int seats = Integer.parseInt(request.getParameter("seats"));
-			
-			classDao.addClass(new Classes(class_id, class_name, seats));
-			RequestDispatcher disp = request.getRequestDispatcher("Classes");
+			classDao.addClass(new Classes( class_name, seats));
+			success_msg.add("Class Added SuccessFully...");
+			request.setAttribute("success", success_msg);
+			RequestDispatcher disp = request.getRequestDispatcher("ClassForm");
 		       disp.forward(request, response);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
