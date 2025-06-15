@@ -34,6 +34,7 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
+		System.out.println("inside login page");
 		ArrayList<String> errors = new ArrayList<>();
 		ArrayList<String> success = new ArrayList<>();
 		String user_name = request.getParameter("username");

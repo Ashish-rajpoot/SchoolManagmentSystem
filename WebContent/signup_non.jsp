@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -9,25 +9,9 @@
 </head>
 <body>
 
-<%@include file="includes/header2.jsp" %>
-	<center>
-		<h1>Teachers Management</h1>
-		<h2>
-					<c:if test="${User != null}">
-                        Edit User
-                    </c:if>
-					<c:if test="${User == null}">
-                        Add New User
-                    </c:if>
-				</h2>
-	</center>
-	<div align="center">
-		<c:if test="${User != null}">
-			<form action="#" method="post">
-		</c:if>
-		<c:if test="${User == null}">
-			<form action="AddUser" method="post">
-		</c:if>
+
+
+
 <div class="container jumbotron">
     <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -48,11 +32,7 @@
                         <label for="role">Role</label>
                         <select class="custom-select form-control" name="role">
                             <option value="ADMIN">ADMIN</option>
-                            <!-- 
-                            <option value="Student">Student</option>
-                            <option value="Host">Host</option>
-                             -->
-                        </select>
+                          
                     </div>
                     <div class="col-lg-12">
                         <label>Email Id</label>
@@ -74,4 +54,4 @@
     </div>
 </div>
 </body>
-</html> 
+</html>

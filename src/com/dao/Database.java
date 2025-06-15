@@ -1,9 +1,13 @@
 package com.dao;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
+
+import javax.servlet.ServletContext;
+
 
 
 public class Database implements AutoCloseable {
@@ -15,17 +19,19 @@ public class Database implements AutoCloseable {
 
 
 		try {
-			FileInputStream fis = new FileInputStream("F:\\SchoolManagmentSystems\\WebContent\\WEB-INF\\configuration\\data.properties");
+//			FileInputStream fis = new FileInputStream("G:\\Eclipse_latest\\SchoolManagmentSystem\\WebContent\\WEB-INF\\configuration\\data.properties");
+//			Properties proper = new Properties();			
+//			proper.load(fis);
+//
+//			String driver = proper.getProperty("driver");
+//			String url = proper.getProperty("url");
+//			String username = proper.getProperty("username");
+//			String password = proper.getProperty("password");
 
-			Properties proper = new Properties();
-
-			proper.load(fis);
-
-			String driver = proper.getProperty("driver");
-			String url = proper.getProperty("url");
-			String username = proper.getProperty("username");
-			String password = proper.getProperty("password");
-
+			  String driver = "com.mysql.cj.jdbc.Driver";
+	            String url = "jdbc:mysql://localhost:3306/schoolmanagementapp?useSSL=false";
+	            String username = "root";
+	            String password = "root";
 
 			Class.forName(driver);
 			connection = DriverManager.getConnection(url,username,password);

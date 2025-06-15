@@ -15,7 +15,6 @@
 
 	<center>
 		<h1>Assign Classes</h1>
-
 	</center>
 	<div align="center">
 		<c:if test="${assign != null}">

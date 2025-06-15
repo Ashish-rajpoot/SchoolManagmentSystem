@@ -1,5 +1,6 @@
 package com.entity;
 
+
 public class Users {
 	private int user_id;
 	private String name, email, password, role;
