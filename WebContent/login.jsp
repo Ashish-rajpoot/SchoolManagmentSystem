@@ -20,7 +20,7 @@
 				<form method="POST" autocomplete="off" action="login">
 					<div class="row">
 						<div class="col-lg-12">
-							<label>Email</label> <input type="text" name="username"
+							<label>Email</label> <input type="text" name="email"
 								class="form-control">
 						</div>
 						<div class="col-lg-12">

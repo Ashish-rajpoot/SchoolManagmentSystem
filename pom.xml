@@ -27,11 +27,20 @@
 </dependency>
 	-->
 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<!-- 
+	
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     <version>8.0.33</version>
 </dependency>
+-->
+
+	<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>12.6.1.jre11</version> <!-- Use version compatible with your Java -->
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>

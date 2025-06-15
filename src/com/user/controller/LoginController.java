@@ -38,19 +38,41 @@ public class LoginController extends HttpServlet {
 		ArrayList<String> errors = new ArrayList<>();
 		ArrayList<String> success = new ArrayList<>();
 		String user_name = request.getParameter("username");
+		String email= request.getParameter("email");
 		String password = request.getParameter("password");
 
 		Users user = null;
-		if(user_name==null||user_name==""||password==null||password=="") {
-			
-			errors.add("Fill all the required fields...");
-		}
+		if (((user_name == null || user_name.trim().isEmpty()) &&
+			     (email == null || email.trim().isEmpty())) ||
+			     password == null || password.trim().isEmpty()) {
+
+			    errors.add("Please fill either username or email, and password.");
+			}
+
 		if (errors.size()>0) {
 			request.setAttribute("errors", errors);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}else {
-			if (user_name.matches("^(.+)@(.+)$")) {
-				user = Authenticate.getUserWithEmail(user_name, password);
+			System.out.println(email);
+			if (email.matches("^(.+)@(.+)$")) {
+				user = Authenticate.getUserWithEmail(email, password);
+				if (user != null) {
+					HttpSession session = request.getSession();
+					session.setAttribute("sessionProfile", user);
+					session.setAttribute("user", user.getEmail());
+					response.sendRedirect("map/home.jsp");
+				} else
+					try {
+						if (request.getAttribute("user")==null && !request.getRequestURI().endsWith("map/login")) {
+							errors.add("Invalid email or Password");
+							request.setAttribute("errors", errors);
+							request.getRequestDispatcher("login.jsp").forward(request, response);
+						}
+					} catch (ServletException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			
 			}else {
 				user = Authenticate.getUser(user_name, password);
 				if (user != null) {

@@ -28,11 +28,16 @@ public class Database implements AutoCloseable {
 //			String username = proper.getProperty("username");
 //			String password = proper.getProperty("password");
 
-			  String driver = "com.mysql.cj.jdbc.Driver";
-	            String url = "jdbc:mysql://localhost:3306/schoolmanagementapp?useSSL=false";
-	            String username = "root";
-	            String password = "root";
+//			  String driver = "com.mysql.cj.jdbc.Driver";
+//	            String url = "jdbc:mysql://localhost:3306/schoolmanagementapp?useSSL=false";
+//	            String username = "root";
+//	            String password = "root";
+			String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+			String url = "jdbc:sqlserver://school-server-db.database.windows.net:1433;database=schoolmanagementapp;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+			String username = "cloudadmin";
+			String password = "sharepoint142@";
 
+//	            jdbc:sqlserver://school-server-db.database.windows.net:1433;database=schoolmanagementapp;user=cloudadmin@school-server-db;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 			Class.forName(driver);
 			connection = DriverManager.getConnection(url,username,password);
 		} catch (Exception e) {
