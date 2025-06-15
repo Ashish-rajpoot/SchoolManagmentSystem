@@ -34,7 +34,6 @@ public class LoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		System.out.println("inside login page");
 		ArrayList<String> errors = new ArrayList<>();
 		ArrayList<String> success = new ArrayList<>();
 		String user_name = request.getParameter("username");
@@ -53,7 +52,6 @@ public class LoginController extends HttpServlet {
 			request.setAttribute("errors", errors);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}else {
-			System.out.println(email);
 			if (email.matches("^(.+)@(.+)$")) {
 				user = Authenticate.getUserWithEmail(email, password);
 				if (user != null) {

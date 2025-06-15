@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.UserDao;
 import com.entity.Teachers;
@@ -42,9 +43,11 @@ public class UpdatePass extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,NumberFormatException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, NumberFormatException {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		ArrayList<String> errors = new ArrayList<>();
@@ -56,35 +59,43 @@ public class UpdatePass extends HttpServlet {
 		Users user = UserDao.selectById(user_id);
 		String password = user.getPassword();
 
-		if(newpass==null||newpass.equals("")||oldpass==null||oldpass.equals("")||confnewpass==null||confnewpass.equals("")) {
+		if (newpass == null || newpass.equals("") || oldpass == null || oldpass.equals("") || confnewpass == null
+				|| confnewpass.equals("")) {
 			errors.add("All fields Required ..");
-			
-		};
-		if(!password.equals(oldpass)) {
-			errors.add("old pass is not matching");
-			
-		};
-		if(!newpass.equals(confnewpass)) {
-			errors.add("New password and confirm password is not matching");
-			
+
 		}
-		if(errors.size()>0) {
+		;
+		if (!password.equals(oldpass)) {
+			errors.add("old pass is not matching");
+
+		}
+		;
+		if (!newpass.equals(confnewpass)) {
+			errors.add("New password and confirm password is not matching");
+
+		}
+		if (errors.size() > 0) {
 			request.setAttribute("errors", errors);
 			RequestDispatcher rd = request.getRequestDispatcher("ProfileServlet");
 			rd.forward(request, response);
-		}
-		else {
-			
-			try {
-			
-				Users book = new Users(user_id,newpass);
-				userDao.updatePassword(book);
-				success.add("Password SuccessFully reset...");
-				request.setAttribute("success",success);
-				RequestDispatcher rd = request.getRequestDispatcher("ProfileServlet");
-				rd.forward(request, response);
+		} else {
 
-			} catch (NumberFormatException | ServletException | IOException e) {
+			try {
+
+				Users book = new Users(user_id, newpass);
+				userDao.updatePassword(book);
+
+				HttpSession session = request.getSession();
+				session.invalidate();
+				response.sendRedirect(request.getContextPath() + "/login.jsp");
+
+//				success.add("Password SuccessFully reset..."); 
+//				success.add("Please Login Again..."); 
+//				request.setAttribute("success",success);
+//				RequestDispatcher rd = request.getRequestDispatcher("ProfileServlet");
+//				rd.forward(request, response);
+
+			} catch (NumberFormatException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -92,9 +103,11 @@ public class UpdatePass extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

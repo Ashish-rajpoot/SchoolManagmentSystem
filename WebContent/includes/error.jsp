@@ -31,5 +31,19 @@
 			</div>
 		</c:forEach>
 	</c:if>
+
+
+	<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+      document.querySelectorAll('.alert').forEach(alert => {
+        alert.classList.remove("show");
+        alert.classList.add("fade");
+        
+        setTimeout(() => alert.remove(), 500);
+      });
+    }, 3000);
+  });
+</script>
 </body>
 </html>
